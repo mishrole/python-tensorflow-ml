@@ -9,12 +9,23 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 celsius = np.array([-40, -10, 0, 8, 15 , 22 ,38], dtype=float)
 fahrenheit = np.array([-40, 14, 32, 46, 59, 72, 100], dtype=float)
 
-
 # Keras is a high-level API that provides a clean and simple way to build and train neural networks.
-# Dense layer is a fully connected layer.
-layer = tf.keras.layers.Dense(units=1, input_shape=[1])
-# Sequential model for this basic neural network.
-model = tf.keras.Sequential([layer])
+
+
+# # * Basic layer
+# # Dense layer is a fully connected layer.
+# layer = tf.keras.layers.Dense(units=1, input_shape=[1])
+
+# # Sequential model for this basic neural network.
+# model = tf.keras.Sequential([layer])
+
+
+# * Multiple layer
+hidden1 = tf.keras.layers.Dense(units=3, input_shape=[1])
+hidden2 = tf.keras.layers.Dense(units=3)
+output = tf.keras.layers.Dense(units=1)
+model = tf.keras.Sequential([hidden1, hidden2, output])
+
 
 # Compile the model.
 model.compile(
@@ -38,24 +49,32 @@ import matplotlib.pyplot as plt
 plt.xlabel('# Epoch')
 plt.ylabel('Loss')
 plt.plot(history.history['loss'])
-# plt.show()
+# Open a new window and show the graph. Close the window to continue.
+plt.show()
 
 
 # Predict the temperature for a new value.
 print('Start model prediction test...')
-result =  model.predict([[100.0]])
-# Expected output [212.0] | Actual output [211.74287]
+result =  model.predict([[97.0]])
+# Expected output [212.0] | Basic output [211.74287] vs Multiple output [211.74744]
 print('Result is ' + str(result) + ' Fahrenheit')
 print('Model prediction test finished!')
 
 
 # Show the model's internal weights and biases.
 print('Model variables')
-# Output -> Weight: [1.7982196] | Bias: [31.920912]
-print(layer.get_weights())
+# Basic Output -> Weight: [1.7982196] | Bias: [31.920912]
+# print(layer.get_weights())
 
 
-# Result
+# At this point, I don't know how to understand the multiple layer weights. 😂
+# Multiple layer: less epochs to get a better result.
+print(hidden1.get_weights())
+print(hidden2.get_weights())
+print(output.get_weights())
+
+
+# Basic layer Result
 # - - -
 # Formula: F = C * 1.8 + 32
 # Our neural network calculate a linear function:
