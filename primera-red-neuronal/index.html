@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius to Fahrenheit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./../styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="back">
+      <a href="./../index.html">👈 Back to list</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Celsius to Fahrenheit</h2>
+        <p class="card-subtitle">Conversion from Celsisus to Fahrenheit using Tensorflow.js</p>
+      </div>
+
+      <div class="card-body">
+        <div class="flex flex-column">
+          <div>
+            <label for="celsius">Celsius degrees: <span class="lbl-celsius">0</span></label>
+          </div>
+          <div>
+            <input class="input-range" type="range" name="celsius" id="celsius" min="-300" max="300">
+            <p>Slide to change the value of celsius degrees</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <p>Result</p>
+        <p class="result">
+          0 Celsius are 32 Fahrenheit
+        </p>
+      </div>
+    
+    </div>
+
+  </div>
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
